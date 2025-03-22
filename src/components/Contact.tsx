@@ -44,14 +44,14 @@ const Contact: React.FC = () => {
             <span className="text-xs uppercase tracking-widest text-muted-foreground">Contact</span>
             <h2 className="text-3xl md:text-5xl font-serif mt-2 mb-6">Let's start a conversation</h2>
             <p className="text-lg md:text-xl leading-relaxed mb-8">
-              Have a data science project in mind or want to discuss potential collaborations? Feel free to reach out. I'm always open to discussing new projects, innovative ideas, or opportunities to apply data science to solve real-world problems.
+              Have a project in mind or want to discuss potential collaborations? Feel free to reach out. I'm always open to discussing new projects, innovative ideas, or opportunities to apply my web development expertise to solve real-world problems.
             </p>
             
             <div className="space-y-4 mt-12">
               <div>
                 <h3 className="text-lg font-medium mb-1">Email</h3>
-                <a href="mailto:palak.agrawal1410@gmail.com" className="text-muted-foreground hover:text-foreground transition-colors">
-                  palak.agrawal1410@gmail.com
+                <a href="mailto:palakagrawal679@gmail.com" className="text-muted-foreground hover:text-foreground transition-colors">
+                  palakagrawal679@gmail.com
                 </a>
               </div>
               

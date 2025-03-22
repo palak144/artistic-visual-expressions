@@ -5,16 +5,16 @@ import { Button } from './ui/button';
 import { LinkedInLogoIcon } from '@radix-ui/react-icons';
 
 const skills = [
-  'Python',
-  'SQL',
-  'Machine Learning',
-  'Data Analysis',
-  'Data Visualization',
-  'Statistical Modeling',
-  'Deep Learning',
-  'TensorFlow',
-  'NLP',
-  'Tableau'
+  'ReactJS',
+  'Angular',
+  'Redux',
+  'TypeScript',
+  'JavaScript',
+  'HTML5',
+  'CSS3',
+  'Next.js',
+  'Jira',
+  'Angular 15'
 ];
 
 const About: React.FC = () => {
@@ -58,15 +58,15 @@ const About: React.FC = () => {
               />
             </div>
             
-            <h3 className="text-xl md:text-2xl font-serif mb-6">Data Scientist with a passion for solving complex problems</h3>
+            <h3 className="text-xl md:text-2xl font-serif mb-6">Software Engineer with expertise in modern web technologies</h3>
             
             <p 
               ref={textRef}
               className="text-lg md:text-xl leading-relaxed opacity-0 translate-y-10 transition-all duration-700 delay-300"
             >
-              I'm a Data Scientist at JDX Consulting with over 2 years of experience in machine learning, data analysis, and building intelligent systems. My expertise spans across statistical modeling, deep learning, and data visualization, enabling me to transform complex data into actionable insights.
+              I'm a Software Engineer at Swiss Re with expertise in ReactJS, Angular, Redux, TypeScript, JavaScript, HTML5, and CSS3. My background includes working with diverse teams across multiple industries, delivering high-quality solutions and excellent user experiences.
               <br /><br />
-              My work is driven by a passion for uncovering patterns in data and using those insights to drive business decisions. I believe in the power of data science to transform how we approach complex problems across industries.
+              I'm passionate about creating efficient and elegant web applications, with a strong focus on modern frameworks and best practices. My ambition drives me to continuously improve and expand my skills in the ever-evolving tech landscape.
             </p>
             
             <div className="mt-8">
@@ -84,7 +84,7 @@ const About: React.FC = () => {
               ref={skillsRef}
               className="opacity-0 translate-y-10 transition-all duration-700 delay-500"
             >
-              <h3 className="text-xl font-medium mb-6">Skills & Expertise</h3>
+              <h3 className="text-xl font-medium mb-6">Skills & Certifications</h3>
               
               <div className="flex flex-wrap gap-3">
                 {skills.map((skill, index) => (
@@ -97,36 +97,57 @@ const About: React.FC = () => {
                 ))}
               </div>
               
+              <div className="mt-8">
+                <h4 className="text-lg font-medium mb-3">Certifications</h4>
+                <ul className="list-disc pl-5 text-sm space-y-2">
+                  <li>Angular Certification</li>
+                  <li>React Certification</li>
+                  <li>Optimizely Certification</li>
+                  <li>Employability Skills Development Certification</li>
+                </ul>
+              </div>
+              
               <div className="mt-12 md:mt-20">
                 <h3 className="text-xl font-medium mb-6">Experience</h3>
                 
                 <div className="space-y-8">
                   <div>
-                    <h4 className="text-lg font-medium">Data Scientist at JDX Consulting</h4>
+                    <h4 className="text-lg font-medium">Software Engineer at Swiss Re</h4>
                     <p className="text-muted-foreground">October 2023 — Present</p>
                     <ul className="mt-2 list-disc pl-5 text-sm">
-                      <li>Developing machine learning models and implementing data-driven solutions</li>
-                      <li>Analyzing complex datasets to extract actionable insights</li>
+                      <li>Developing and maintaining web applications using modern frameworks</li>
+                      <li>Collaborating with cross-functional teams to deliver high-quality software solutions</li>
                     </ul>
                   </div>
                   
                   <div>
-                    <h4 className="text-lg font-medium">Data Scientist at Infosys</h4>
-                    <p className="text-muted-foreground">June 2022 — September 2023</p>
+                    <h4 className="text-lg font-medium">Software Engineer at Infosys</h4>
+                    <p className="text-muted-foreground">January 2022 — September 2023</p>
                     <ul className="mt-2 list-disc pl-5 text-sm">
-                      <li>Designed and implemented machine learning algorithms</li>
-                      <li>Created dashboards and visualizations for business stakeholders</li>
+                      <li>Worked on My Connection (Angular 15 portal)</li>
+                      <li>Implemented Optimizely experiments for improved user experiences</li>
+                      <li>Collaborated with TalkTalk on web application development</li>
                     </ul>
                   </div>
                   
                   <div>
-                    <h4 className="text-lg font-medium">Data Science Intern at Infosys</h4>
-                    <p className="text-muted-foreground">January 2022 — June 2022</p>
+                    <h4 className="text-lg font-medium">Earlier Experience</h4>
+                    <p className="text-muted-foreground">2018 — 2021</p>
                     <ul className="mt-2 list-disc pl-5 text-sm">
-                      <li>Assisted in data preparation and model training</li>
-                      <li>Conducted exploratory data analysis and feature engineering</li>
+                      <li>Lumiere32: Frontend development and UI implementation</li>
+                      <li>Zensar Technologies: Web application development</li>
+                      <li>WIPO: Contributed to WIPO Match project</li>
+                      <li>FAO: Web development and maintenance</li>
                     </ul>
                   </div>
+                </div>
+              </div>
+              
+              <div className="mt-12">
+                <h3 className="text-xl font-medium mb-6">Education</h3>
+                <div>
+                  <h4 className="text-lg font-medium">Bachelor of Engineering in Computer Science</h4>
+                  <p className="text-muted-foreground">Rajiv Gandhi Prodyogiki Vishwavidyalaya (2014-2018)</p>
                 </div>
               </div>
             </div>
