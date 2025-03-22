@@ -22,7 +22,7 @@ export default {
 			fontFamily: {
 				sans: ['Inter', 'sans-serif'],
 				serif: ['Playfair Display', 'serif'],
-				mono: ['Space Mono', 'monospace'],
+				mono: ['Fira Code', 'Space Mono', 'monospace'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',

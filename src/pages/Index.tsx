@@ -1,16 +1,19 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Navbar from '@/components/Navbar';
+import Sidebar from '@/components/Sidebar';
 import Hero from '@/components/Hero';
 import Portfolio from '@/components/Portfolio';
 import About from '@/components/About';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import Experience from '@/components/Experience';
 
 const Index: React.FC = () => {
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const sectionsRef = useRef<(HTMLElement | null)[]>([]);
 
   useEffect(() => {
     // Handle cursor movement
@@ -38,6 +41,27 @@ const Index: React.FC = () => {
       setIsLoading(false);
     }, 1500);
 
+    // Handle intersection observer for animations
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1,
+    };
+
+    const handleIntersect = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(handleIntersect, observerOptions);
+    
+    document.querySelectorAll('.fade-up-animation').forEach(el => {
+      observer.observe(el);
+    });
+
     document.addEventListener('mousemove', handleMouseMove);
     document.addEventListener('mouseover', handleMouseOver);
 
@@ -45,6 +69,7 @@ const Index: React.FC = () => {
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseover', handleMouseOver);
       clearTimeout(timer);
+      observer.disconnect();
     };
   }, []);
 
@@ -57,12 +82,12 @@ const Index: React.FC = () => {
         }`}
       >
         <div className="text-center">
-          <h1 className="font-serif text-4xl md:text-6xl font-bold tracking-tight mb-6">PORTFOLIO</h1>
-          <div className="inline-block w-16 h-px bg-foreground animate-pulse"></div>
+          <h1 className="font-mono text-4xl md:text-6xl font-bold tracking-tight mb-6 text-accent">P<span className="text-foreground">A</span></h1>
+          <div className="inline-block w-16 h-px bg-accent animate-pulse"></div>
         </div>
       </div>
 
-      {/* Custom Cursor (hidden on mobile) */}
+      {/* Custom Cursor */}
       <div
         className={`custom-cursor hidden md:block ${isHovering ? 'hover' : ''}`}
         style={{
@@ -71,11 +96,13 @@ const Index: React.FC = () => {
       ></div>
 
       <div className="min-h-screen flex flex-col">
+        <Sidebar />
         <Navbar />
-        <main className="flex-1">
+        <main className="flex-1 lg:pl-32">
           <Hero />
-          <Portfolio />
           <About />
+          <Experience />
+          <Portfolio />
           <Contact />
         </main>
         <Footer />

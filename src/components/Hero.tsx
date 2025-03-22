@@ -1,71 +1,53 @@
 
 import React, { useEffect, useRef } from 'react';
 import AnimatedText from './AnimatedText';
-import { ArrowDown } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 const Hero: React.FC = () => {
-  const heroRef = useRef<HTMLDivElement>(null);
-  const imageRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (!imageRef.current) return;
-      
-      const scrollY = window.scrollY;
-      const parallaxValue = scrollY * 0.4;
-      
-      imageRef.current.style.transform = `translateY(${parallaxValue}px)`;
+    const initAnimation = () => {
+      const fadeElements = containerRef.current?.querySelectorAll('.fade-up-animation');
+      fadeElements?.forEach((el, i) => {
+        setTimeout(() => {
+          el.classList.add('visible');
+        }, 300 * i);
+      });
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    initAnimation();
   }, []);
 
   return (
-    <section ref={heroRef} id="home" className="relative w-full h-screen overflow-hidden">
-      {/* Background with neutral tone */}
-      <div
-        ref={imageRef}
-        className="absolute inset-0 w-full h-full bg-[#F6F6F7]"
-        style={{
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          transformOrigin: 'center'
-        }}
-      />
-      
-      {/* Content Overlay */}
-      <div className="relative h-full w-full flex flex-col justify-center items-center px-6 md:px-20">
-        <div className="max-w-4xl text-center">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold tracking-tight mb-4 md:mb-6">
-            <AnimatedText 
-              text="Creative Design & Development" 
-              className="block" 
-              speed={40}
-            />
-          </h1>
-          
-          <p className="text-lg md:text-xl font-light mb-8 md:mb-10 max-w-2xl mx-auto">
-            <AnimatedText 
-              text="Crafting digital experiences through thoughtful design and innovative development." 
-              delay={1200} 
-              speed={20}
-            />
-          </p>
-          
+    <section 
+      id="home" 
+      ref={containerRef}
+      className="min-h-screen flex flex-col justify-center pt-20 px-6 md:px-12"
+    >
+      <div className="max-w-5xl">
+        <p className="font-mono text-accent mb-5 fade-up-animation">Hi, my name is</p>
+        
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-mono text-foreground font-bold mb-4 fade-up-animation">
+          Palak Agrawal.
+        </h1>
+        
+        <h2 className="text-3xl md:text-5xl lg:text-6xl font-mono text-muted-foreground font-bold mb-8 fade-up-animation">
+          I build exceptional web experiences.
+        </h2>
+        
+        <p className="text-muted-foreground max-w-xl text-lg mb-12 fade-up-animation">
+          I'm a software engineer specializing in building modern web applications. 
+          Currently, I'm focused on creating accessible, human-centered digital experiences at <a href="#" className="text-accent hover:underline">Swiss Re</a>.
+        </p>
+        
+        <div className="fade-up-animation">
           <a 
             href="#portfolio"
-            className="inline-flex items-center gap-2 border border-foreground/30 px-6 py-3 rounded-full transition-all hover:bg-foreground hover:text-background hover:px-8"
+            className="inline-flex items-center gap-2 px-6 py-4 border border-accent rounded text-accent font-mono hover:bg-accent/10 transition-all duration-300"
           >
-            <span className="text-sm font-medium tracking-wider uppercase">Explore Works</span>
-          </a>
-        </div>
-        
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <a href="#portfolio" className="flex flex-col items-center">
-            <span className="text-xs uppercase tracking-widest mb-2">Scroll</span>
-            <ArrowDown size={20} />
+            <span>Check out my work</span>
+            <ArrowRight size={16} />
           </a>
         </div>
       </div>

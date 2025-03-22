@@ -1,10 +1,10 @@
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { useToast } from "@/components/ui/use-toast"
-import { LinkedInLogoIcon, GitHubLogoIcon, TwitterLogoIcon } from '@radix-ui/react-icons';
+import { ArrowRight, Github, Linkedin, Mail } from 'lucide-react';
 
 const Contact: React.FC = () => {
   const { toast } = useToast();
@@ -14,6 +14,26 @@ const Contact: React.FC = () => {
     message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -37,69 +57,41 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-20 md:py-32 px-6 md:px-12 bg-[#D3E4FD]/20">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20">
-          <div>
-            <span className="text-xs uppercase tracking-widest text-muted-foreground">Contact</span>
-            <h2 className="text-3xl md:text-5xl font-serif mt-2 mb-6">Let's start a conversation</h2>
-            <p className="text-lg md:text-xl leading-relaxed mb-8">
-              Have a project in mind or want to discuss potential collaborations? Feel free to reach out. I'm always open to discussing new projects, innovative ideas, or opportunities to apply my web development expertise to solve real-world problems.
-            </p>
-            
-            <div className="space-y-4 mt-12">
+    <section 
+      id="contact" 
+      ref={sectionRef}
+      className="py-20 px-6 md:px-12 fade-up-animation"
+    >
+      <div className="max-w-3xl mx-auto text-center">
+        <p className="font-mono text-accent mb-4">04. What's Next?</p>
+        <h2 className="text-3xl md:text-5xl font-mono mb-6">Get In Touch</h2>
+        
+        <p className="text-muted-foreground mb-12 max-w-xl mx-auto">
+          I'm currently open to new opportunities and collaborations. Whether you have a question, project idea, 
+          or just want to say hello, my inbox is always open. I'll do my best to get back to you as soon as possible!
+        </p>
+        
+        <div className="bg-secondary/30 rounded-md p-8 backdrop-blur-sm border border-border/30">
+          <form onSubmit={handleSubmit} className="space-y-6 text-left">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <h3 className="text-lg font-medium mb-1">Email</h3>
-                <a href="mailto:palakagrawal679@gmail.com" className="text-muted-foreground hover:text-foreground transition-colors">
-                  palakagrawal679@gmail.com
-                </a>
-              </div>
-              
-              <div>
-                <h3 className="text-lg font-medium mb-1">Based in</h3>
-                <p className="text-muted-foreground">London, United Kingdom</p>
-              </div>
-              
-              <div className="pt-6">
-                <h3 className="text-lg font-medium mb-3">Social</h3>
-                <div className="flex space-x-6">
-                  <a href="https://www.linkedin.com/in/palak-agrawal-86bbaa141/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-foreground hover:text-foreground/70 transition-colors">
-                    <LinkedInLogoIcon className="w-5 h-5" />
-                    LinkedIn
-                  </a>
-                  <a href="#" className="flex items-center gap-2 text-foreground hover:text-foreground/70 transition-colors">
-                    <GitHubLogoIcon className="w-5 h-5" />
-                    GitHub
-                  </a>
-                  <a href="#" className="flex items-center gap-2 text-foreground hover:text-foreground/70 transition-colors">
-                    <TwitterLogoIcon className="w-5 h-5" />
-                    Twitter
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium mb-2">
-                  Name
+                <label htmlFor="name" className="block text-sm font-mono mb-2 text-muted-foreground">
+                  Your Name
                 </label>
                 <Input
                   id="name"
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  placeholder="Your name"
+                  placeholder="John Doe"
                   required
-                  className="bg-background border-input"
+                  className="bg-background/50 border-border/30 focus-visible:ring-accent"
                 />
               </div>
               
               <div>
-                <label htmlFor="email" className="block text-sm font-medium mb-2">
-                  Email
+                <label htmlFor="email" className="block text-sm font-mono mb-2 text-muted-foreground">
+                  Your Email
                 </label>
                 <Input
                   id="email"
@@ -107,37 +99,77 @@ const Contact: React.FC = () => {
                   type="email"
                   value={formData.email}
                   onChange={handleChange}
-                  placeholder="Your email address"
+                  placeholder="john@example.com"
                   required
-                  className="bg-background border-input"
+                  className="bg-background/50 border-border/30 focus-visible:ring-accent"
                 />
               </div>
-              
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium mb-2">
-                  Message
-                </label>
-                <Textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  placeholder="Tell me about your project..."
-                  required
-                  className="bg-background border-input h-40"
-                />
-              </div>
-              
-              <Button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full bg-foreground text-background hover:bg-foreground/90 font-medium rounded-md"
-              >
-                {isSubmitting ? 'Sending...' : 'Send Message'}
-              </Button>
-            </form>
+            </div>
+            
+            <div>
+              <label htmlFor="message" className="block text-sm font-mono mb-2 text-muted-foreground">
+                Message
+              </label>
+              <Textarea
+                id="message"
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                placeholder="Tell me about your project or inquiry..."
+                required
+                className="bg-background/50 border-border/30 min-h-[150px] focus-visible:ring-accent"
+              />
+            </div>
+            
+            <Button
+              type="submit"
+              disabled={isSubmitting}
+              className="border border-accent bg-transparent text-accent hover:bg-accent/10 font-mono"
+            >
+              {isSubmitting ? 'Sending...' : (
+                <span className="flex items-center gap-2">
+                  Send Message <ArrowRight size={16} />
+                </span>
+              )}
+            </Button>
+          </form>
+        </div>
+        
+        <div className="mt-12 flex flex-col items-center">
+          <p className="font-mono text-muted-foreground mb-4">Or reach out directly</p>
+          
+          <div className="flex gap-6">
+            <a
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-accent transition-colors flex flex-col items-center gap-1"
+            >
+              <Github size={24} />
+              <span className="text-xs font-mono">GitHub</span>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/palak-agrawal-86bbaa141/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-accent transition-colors flex flex-col items-center gap-1"
+            >
+              <Linkedin size={24} />
+              <span className="text-xs font-mono">LinkedIn</span>
+            </a>
+            <a
+              href="mailto:palakagrawal679@gmail.com"
+              className="text-muted-foreground hover:text-accent transition-colors flex flex-col items-center gap-1"
+            >
+              <Mail size={24} />
+              <span className="text-xs font-mono">Email</span>
+            </a>
           </div>
         </div>
+        
+        <p className="mt-20 font-mono text-muted-foreground text-sm">
+          Designed & Built with ❤️
+        </p>
       </div>
     </section>
   );
