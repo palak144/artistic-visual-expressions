@@ -1,17 +1,20 @@
 
 import React, { useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
+import { Button } from './ui/button';
+import { LinkedInLogoIcon } from '@radix-ui/react-icons';
 
 const skills = [
-  'UX/UI Design',
-  'Web Development',
-  'Brand Strategy',
-  'Visual Design',
-  'Frontend Engineering',
-  'Art Direction',
-  'Interaction Design',
-  'Motion Graphics',
-  'Typography'
+  'Python',
+  'SQL',
+  'Machine Learning',
+  'Data Analysis',
+  'Data Visualization',
+  'Statistical Modeling',
+  'Deep Learning',
+  'TensorFlow',
+  'NLP',
+  'Tableau'
 ];
 
 const About: React.FC = () => {
@@ -46,25 +49,34 @@ const About: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20">
           <div>
             <span className="text-xs uppercase tracking-widest text-muted-foreground">About</span>
-            <h2 className="text-3xl md:text-5xl font-serif mt-2 mb-4">John Doe</h2>
+            <h2 className="text-3xl md:text-5xl font-serif mt-2 mb-4">Palak Agrawal</h2>
             <div className="mb-8 overflow-hidden rounded-lg shadow-md w-48 h-48">
               <img 
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=60" 
-                alt="John Doe" 
+                src="https://media.licdn.com/dms/image/C5603AQFTOcww8wOkuA/profile-displayphoto-shrink_800_800/0/1650894901044?e=1716422400&v=beta&t=nQDUvTi3TUK0lRJT8ZVWP_QlUWKJ1y5MwJ9SfQ4xIrI" 
+                alt="Palak Agrawal" 
                 className="w-full h-full object-cover"
               />
             </div>
             
-            <h3 className="text-xl md:text-2xl font-serif mb-6">I create meaningful digital experiences that connect with people</h3>
+            <h3 className="text-xl md:text-2xl font-serif mb-6">Data Scientist with a passion for solving complex problems</h3>
             
             <p 
               ref={textRef}
               className="text-lg md:text-xl leading-relaxed opacity-0 translate-y-10 transition-all duration-700 delay-300"
             >
-              I'm a designer and developer with over 8 years of experience creating digital products for clients across various industries. My approach combines aesthetic sensibility with technical expertise, allowing me to bridge the gap between design and implementation.
+              I'm a Data Scientist at JDX Consulting with over 2 years of experience in machine learning, data analysis, and building intelligent systems. My expertise spans across statistical modeling, deep learning, and data visualization, enabling me to transform complex data into actionable insights.
               <br /><br />
-              My work is driven by a passion for crafting intuitive, meaningful experiences that resonate with users and help businesses achieve their goals. I believe in the power of thoughtful design to transform how we interact with technology.
+              My work is driven by a passion for uncovering patterns in data and using those insights to drive business decisions. I believe in the power of data science to transform how we approach complex problems across industries.
             </p>
+            
+            <div className="mt-8">
+              <a href="https://www.linkedin.com/in/palak-agrawal-86bbaa141/" target="_blank" rel="noopener noreferrer">
+                <Button className="flex items-center gap-2">
+                  <LinkedInLogoIcon className="w-4 h-4" />
+                  Connect on LinkedIn
+                </Button>
+              </a>
+            </div>
           </div>
           
           <div className="md:pt-16">
@@ -90,18 +102,30 @@ const About: React.FC = () => {
                 
                 <div className="space-y-8">
                   <div>
-                    <h4 className="text-lg font-medium">Senior Designer at Studio Minimalist</h4>
-                    <p className="text-muted-foreground">2019 — Present</p>
+                    <h4 className="text-lg font-medium">Data Scientist at JDX Consulting</h4>
+                    <p className="text-muted-foreground">October 2023 — Present</p>
+                    <ul className="mt-2 list-disc pl-5 text-sm">
+                      <li>Developing machine learning models and implementing data-driven solutions</li>
+                      <li>Analyzing complex datasets to extract actionable insights</li>
+                    </ul>
                   </div>
                   
                   <div>
-                    <h4 className="text-lg font-medium">UI Developer at Digital Crafts</h4>
-                    <p className="text-muted-foreground">2016 — 2019</p>
+                    <h4 className="text-lg font-medium">Data Scientist at Infosys</h4>
+                    <p className="text-muted-foreground">June 2022 — September 2023</p>
+                    <ul className="mt-2 list-disc pl-5 text-sm">
+                      <li>Designed and implemented machine learning algorithms</li>
+                      <li>Created dashboards and visualizations for business stakeholders</li>
+                    </ul>
                   </div>
                   
                   <div>
-                    <h4 className="text-lg font-medium">Junior Designer at Creative Agency</h4>
-                    <p className="text-muted-foreground">2014 — 2016</p>
+                    <h4 className="text-lg font-medium">Data Science Intern at Infosys</h4>
+                    <p className="text-muted-foreground">January 2022 — June 2022</p>
+                    <ul className="mt-2 list-disc pl-5 text-sm">
+                      <li>Assisted in data preparation and model training</li>
+                      <li>Conducted exploratory data analysis and feature engineering</li>
+                    </ul>
                   </div>
                 </div>
               </div>

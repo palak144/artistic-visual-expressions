@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { useToast } from "@/components/ui/use-toast"
+import { LinkedInLogoIcon, GitHubLogoIcon, TwitterLogoIcon } from '@radix-ui/react-icons';
 
 const Contact: React.FC = () => {
   const { toast } = useToast();
@@ -43,33 +44,36 @@ const Contact: React.FC = () => {
             <span className="text-xs uppercase tracking-widest text-muted-foreground">Contact</span>
             <h2 className="text-3xl md:text-5xl font-serif mt-2 mb-6">Let's start a conversation</h2>
             <p className="text-lg md:text-xl leading-relaxed mb-8">
-              Have a project in mind or just want to chat? Feel free to reach out. I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+              Have a data science project in mind or want to discuss potential collaborations? Feel free to reach out. I'm always open to discussing new projects, innovative ideas, or opportunities to apply data science to solve real-world problems.
             </p>
             
             <div className="space-y-4 mt-12">
               <div>
                 <h3 className="text-lg font-medium mb-1">Email</h3>
-                <a href="mailto:hello@example.com" className="text-muted-foreground hover:text-foreground transition-colors">
-                  hello@example.com
+                <a href="mailto:palak.agrawal1410@gmail.com" className="text-muted-foreground hover:text-foreground transition-colors">
+                  palak.agrawal1410@gmail.com
                 </a>
               </div>
               
               <div>
                 <h3 className="text-lg font-medium mb-1">Based in</h3>
-                <p className="text-muted-foreground">San Francisco, California</p>
+                <p className="text-muted-foreground">London, United Kingdom</p>
               </div>
               
               <div className="pt-6">
                 <h3 className="text-lg font-medium mb-3">Social</h3>
                 <div className="flex space-x-6">
-                  <a href="#" className="text-foreground hover:text-foreground/70 transition-colors">
-                    Twitter
-                  </a>
-                  <a href="#" className="text-foreground hover:text-foreground/70 transition-colors">
-                    Dribbble
-                  </a>
-                  <a href="#" className="text-foreground hover:text-foreground/70 transition-colors">
+                  <a href="https://www.linkedin.com/in/palak-agrawal-86bbaa141/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-foreground hover:text-foreground/70 transition-colors">
+                    <LinkedInLogoIcon className="w-5 h-5" />
                     LinkedIn
+                  </a>
+                  <a href="#" className="flex items-center gap-2 text-foreground hover:text-foreground/70 transition-colors">
+                    <GitHubLogoIcon className="w-5 h-5" />
+                    GitHub
+                  </a>
+                  <a href="#" className="flex items-center gap-2 text-foreground hover:text-foreground/70 transition-colors">
+                    <TwitterLogoIcon className="w-5 h-5" />
+                    Twitter
                   </a>
                 </div>
               </div>
