@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, FileDown } from 'lucide-react';
 
 interface NavItem {
   label: string;
@@ -46,7 +46,9 @@ const Navbar: React.FC = () => {
     <header
       className={cn(
         'fixed top-0 left-0 w-full z-50 transition-all duration-300 px-6 md:px-12',
-        scrolled ? 'py-3 backdrop-blur-md bg-background/80 shadow-sm' : 'py-6 bg-transparent'
+        scrolled 
+          ? 'py-3 backdrop-blur-md bg-background/95 shadow-sm' 
+          : 'py-6 bg-background/80'
       )}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -69,6 +71,16 @@ const Navbar: React.FC = () => {
               {item.label}
             </a>
           ))}
+          
+          {/* Resume Download Button */}
+          <a
+            href="/resume.pdf"
+            download
+            className="inline-flex items-center gap-2 bg-foreground text-background px-4 py-2 rounded-full text-sm uppercase tracking-widest font-medium hover:bg-foreground/80 transition-colors"
+          >
+            <span>Resume</span>
+            <FileDown size={16} />
+          </a>
         </nav>
 
         {/* Mobile Menu Toggle */}
@@ -99,6 +111,17 @@ const Navbar: React.FC = () => {
               {item.label}
             </a>
           ))}
+          
+          {/* Mobile Resume Download */}
+          <a
+            href="/resume.pdf"
+            download
+            className="inline-flex items-center gap-2 bg-foreground text-background px-6 py-3 rounded-full text-sm uppercase tracking-widest font-medium mt-4"
+            onClick={closeMenu}
+          >
+            <span>Download Resume</span>
+            <FileDown size={16} />
+          </a>
         </nav>
       </div>
     </header>

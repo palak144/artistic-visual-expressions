@@ -41,12 +41,21 @@ const About: React.FC = () => {
   }, []);
 
   return (
-    <section id="about" className="py-20 md:py-32 px-6 md:px-12 bg-secondary">
+    <section id="about" className="py-20 md:py-32 px-6 md:px-12 bg-[#F2FCE2]">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20">
           <div>
             <span className="text-xs uppercase tracking-widest text-muted-foreground">About</span>
-            <h2 className="text-3xl md:text-5xl font-serif mt-2 mb-8">I create meaningful digital experiences that connect with people</h2>
+            <h2 className="text-3xl md:text-5xl font-serif mt-2 mb-4">John Doe</h2>
+            <div className="mb-8 overflow-hidden rounded-lg shadow-md w-48 h-48">
+              <img 
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=60" 
+                alt="John Doe" 
+                className="w-full h-full object-cover"
+              />
+            </div>
+            
+            <h3 className="text-xl md:text-2xl font-serif mb-6">I create meaningful digital experiences that connect with people</h3>
             
             <p 
               ref={textRef}

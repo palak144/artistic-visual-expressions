@@ -1,193 +1,137 @@
 
 import React, { useState } from 'react';
-import { cn } from '@/lib/utils';
-import { ArrowRight, Mail, Phone, MapPin } from 'lucide-react';
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
+import { useToast } from "@/components/ui/use-toast"
 
 const Contact: React.FC = () => {
+  const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    message: ''
+    message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
     // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitted(true);
-      
-      // Reset form after submission
-      setFormData({
-        name: '',
-        email: '',
-        message: ''
-      });
-      
-      // Reset success message after 5 seconds
-      setTimeout(() => {
-        setSubmitted(false);
-      }, 5000);
-    }, 1500);
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    
+    toast({
+      title: "Message sent!",
+      description: "Thank you for reaching out. I'll get back to you soon.",
+    });
+    
+    setFormData({ name: '', email: '', message: '' });
+    setIsSubmitting(false);
   };
 
   return (
-    <section id="contact" className="py-20 md:py-32 px-6 md:px-12">
+    <section id="contact" className="py-20 md:py-32 px-6 md:px-12 bg-[#D3E4FD]/20">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16 md:mb-24">
-          <span className="text-xs uppercase tracking-widest text-muted-foreground">Contact</span>
-          <h2 className="text-3xl md:text-5xl font-serif mt-2 max-w-xl mx-auto">Let's create something amazing together</h2>
-        </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20">
+          <div>
+            <span className="text-xs uppercase tracking-widest text-muted-foreground">Contact</span>
+            <h2 className="text-3xl md:text-5xl font-serif mt-2 mb-6">Let's start a conversation</h2>
+            <p className="text-lg md:text-xl leading-relaxed mb-8">
+              Have a project in mind or just want to chat? Feel free to reach out. I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+            </p>
+            
+            <div className="space-y-4 mt-12">
+              <div>
+                <h3 className="text-lg font-medium mb-1">Email</h3>
+                <a href="mailto:hello@example.com" className="text-muted-foreground hover:text-foreground transition-colors">
+                  hello@example.com
+                </a>
+              </div>
+              
+              <div>
+                <h3 className="text-lg font-medium mb-1">Based in</h3>
+                <p className="text-muted-foreground">San Francisco, California</p>
+              </div>
+              
+              <div className="pt-6">
+                <h3 className="text-lg font-medium mb-3">Social</h3>
+                <div className="flex space-x-6">
+                  <a href="#" className="text-foreground hover:text-foreground/70 transition-colors">
+                    Twitter
+                  </a>
+                  <a href="#" className="text-foreground hover:text-foreground/70 transition-colors">
+                    Dribbble
+                  </a>
+                  <a href="#" className="text-foreground hover:text-foreground/70 transition-colors">
+                    LinkedIn
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
           <div>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium mb-2">Name</label>
-                <input
-                  type="text"
+                <label htmlFor="name" className="block text-sm font-medium mb-2">
+                  Name
+                </label>
+                <Input
                   id="name"
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  required
-                  className="w-full bg-secondary border-b border-input px-4 py-3 focus:outline-none focus:border-foreground transition-colors"
                   placeholder="Your name"
+                  required
+                  className="bg-background border-input"
                 />
               </div>
               
               <div>
-                <label htmlFor="email" className="block text-sm font-medium mb-2">Email</label>
-                <input
-                  type="email"
+                <label htmlFor="email" className="block text-sm font-medium mb-2">
+                  Email
+                </label>
+                <Input
                   id="email"
                   name="email"
+                  type="email"
                   value={formData.email}
                   onChange={handleChange}
+                  placeholder="Your email address"
                   required
-                  className="w-full bg-secondary border-b border-input px-4 py-3 focus:outline-none focus:border-foreground transition-colors"
-                  placeholder="Your email"
+                  className="bg-background border-input"
                 />
               </div>
               
               <div>
-                <label htmlFor="message" className="block text-sm font-medium mb-2">Message</label>
-                <textarea
+                <label htmlFor="message" className="block text-sm font-medium mb-2">
+                  Message
+                </label>
+                <Textarea
                   id="message"
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
+                  placeholder="Tell me about your project..."
                   required
-                  rows={5}
-                  className="w-full bg-secondary border-b border-input px-4 py-3 focus:outline-none focus:border-foreground transition-colors resize-none"
-                  placeholder="Your message"
+                  className="bg-background border-input h-40"
                 />
               </div>
               
-              <button
+              <Button
                 type="submit"
                 disabled={isSubmitting}
-                className={cn(
-                  "inline-flex items-center gap-2 border border-foreground px-6 py-3 text-foreground rounded-full transition-all",
-                  "hover:bg-foreground hover:text-background",
-                  isSubmitting && "opacity-70 cursor-not-allowed"
-                )}
+                className="w-full bg-foreground text-background hover:bg-foreground/90 font-medium rounded-md"
               >
-                <span className="text-sm font-medium tracking-wider uppercase">
-                  {isSubmitting ? 'Sending...' : submitted ? 'Sent!' : 'Send Message'}
-                </span>
-                <ArrowRight size={16} />
-              </button>
-              
-              {submitted && (
-                <p className="text-sm text-green-600 mt-4">
-                  Thank you for your message! I'll get back to you soon.
-                </p>
-              )}
+                {isSubmitting ? 'Sending...' : 'Send Message'}
+              </Button>
             </form>
-          </div>
-          
-          <div className="md:pl-10">
-            <h3 className="text-xl font-medium mb-8">Let's connect</h3>
-            
-            <div className="space-y-6 mb-12">
-              <div className="flex items-start gap-4">
-                <Mail size={24} className="mt-1" />
-                <div>
-                  <h4 className="font-medium mb-1">Email</h4>
-                  <a href="mailto:hello@portfolio.com" className="text-muted-foreground hover:text-foreground transition-colors">
-                    hello@portfolio.com
-                  </a>
-                </div>
-              </div>
-              
-              <div className="flex items-start gap-4">
-                <Phone size={24} className="mt-1" />
-                <div>
-                  <h4 className="font-medium mb-1">Phone</h4>
-                  <a href="tel:+1234567890" className="text-muted-foreground hover:text-foreground transition-colors">
-                    +1 (234) 567-890
-                  </a>
-                </div>
-              </div>
-              
-              <div className="flex items-start gap-4">
-                <MapPin size={24} className="mt-1" />
-                <div>
-                  <h4 className="font-medium mb-1">Location</h4>
-                  <p className="text-muted-foreground">
-                    San Francisco, California
-                  </p>
-                </div>
-              </div>
-            </div>
-            
-            <div>
-              <h3 className="text-xl font-medium mb-6">Follow me</h3>
-              <div className="flex gap-6">
-                <a 
-                  href="#" 
-                  className="text-muted-foreground hover:text-foreground transition-colors"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Instagram
-                </a>
-                <a 
-                  href="#" 
-                  className="text-muted-foreground hover:text-foreground transition-colors"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Twitter
-                </a>
-                <a 
-                  href="#" 
-                  className="text-muted-foreground hover:text-foreground transition-colors"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  LinkedIn
-                </a>
-                <a 
-                  href="#" 
-                  className="text-muted-foreground hover:text-foreground transition-colors"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Dribbble
-                </a>
-              </div>
-            </div>
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
-import { ExternalLink, Plus } from 'lucide-react';
+import { ExternalLink, Plus, X } from 'lucide-react';
 
 interface Project {
   id: number;
@@ -233,7 +233,7 @@ const Portfolio: React.FC = () => {
   };
 
   return (
-    <section id="portfolio" className="py-20 md:py-32 px-6 md:px-12">
+    <section id="portfolio" className="py-20 md:py-32 px-6 md:px-12 bg-[#FFDEE2]/10">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16 md:mb-24">
           <span className="text-xs uppercase tracking-widest text-muted-foreground">Portfolio</span>

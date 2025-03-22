@@ -23,22 +23,20 @@ const Hero: React.FC = () => {
 
   return (
     <section ref={heroRef} id="home" className="relative w-full h-screen overflow-hidden">
-      {/* Background Image with Parallax Effect */}
+      {/* Background with neutral tone */}
       <div
         ref={imageRef}
-        className="absolute inset-0 w-full h-full bg-black"
+        className="absolute inset-0 w-full h-full bg-[#F6F6F7]"
         style={{
-          backgroundImage: 'url(https://images.unsplash.com/photo-1649972904349-6e44c42644a7?auto=format&fit=crop&q=80)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          filter: 'brightness(0.8) contrast(1.1)',
           transformOrigin: 'center'
         }}
       />
       
       {/* Content Overlay */}
       <div className="relative h-full w-full flex flex-col justify-center items-center px-6 md:px-20">
-        <div className="max-w-4xl text-center text-white">
+        <div className="max-w-4xl text-center">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold tracking-tight mb-4 md:mb-6">
             <AnimatedText 
               text="Creative Design & Development" 
@@ -57,7 +55,7 @@ const Hero: React.FC = () => {
           
           <a 
             href="#portfolio"
-            className="inline-flex items-center gap-2 border border-white/30 backdrop-blur-sm px-6 py-3 text-white rounded-full transition-all hover:bg-white/20 hover:px-8"
+            className="inline-flex items-center gap-2 border border-foreground/30 px-6 py-3 rounded-full transition-all hover:bg-foreground hover:text-background hover:px-8"
           >
             <span className="text-sm font-medium tracking-wider uppercase">Explore Works</span>
           </a>
@@ -65,7 +63,7 @@ const Hero: React.FC = () => {
         
         {/* Scroll Indicator */}
         <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <a href="#portfolio" className="text-white flex flex-col items-center">
+          <a href="#portfolio" className="flex flex-col items-center">
             <span className="text-xs uppercase tracking-widest mb-2">Scroll</span>
             <ArrowDown size={20} />
           </a>
