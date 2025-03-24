@@ -26,6 +26,22 @@ const latestSkills = [
   'DevOps'
 ];
 
+const awards = [
+  'Efficiency Badge',
+  'Rising Star Award at Zensar',
+  'Insta Award (2) at Infosys'
+];
+
+const interests = [
+  'Tech Forums',
+  'Quality Improvement',
+  'Mentoring',
+  'Traveling',
+  'Music',
+  'Sports',
+  'Adventures'
+];
+
 const About: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
   
@@ -107,6 +123,30 @@ const About: React.FC = () => {
                 ))}
               </ul>
             </div>
+            
+            <div className="mt-8 fade-up-animation">
+              <h4 className="text-sm font-mono mb-3 text-accent">Awards & Achievements</h4>
+              <ul className="space-y-2">
+                {awards.map((award, index) => (
+                  <li key={index} className="flex items-center font-mono text-sm text-muted-foreground">
+                    <Badge variant="outline" className="border-accent/20">
+                      <span className="text-accent mr-2">▹</span> {award}
+                    </Badge>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            
+            <div className="mt-8 fade-up-animation">
+              <h4 className="text-sm font-mono mb-3 text-accent">Personal Interests</h4>
+              <div className="flex flex-wrap gap-2">
+                {interests.map((interest, index) => (
+                  <Badge key={index} variant="secondary" className="bg-secondary/50 text-muted-foreground">
+                    {interest}
+                  </Badge>
+                ))}
+              </div>
+            </div>
           </div>
           
           <div className="fade-up-animation">
@@ -142,6 +182,9 @@ const About: React.FC = () => {
                 </li>
                 <li className="flex items-center text-muted-foreground">
                   <span className="text-accent mr-2">▹</span> Optimizely Certification
+                </li>
+                <li className="flex items-center text-muted-foreground">
+                  <span className="text-accent mr-2">▹</span> Experience Perfectionist Level 1 (Optimizely)
                 </li>
               </ul>
             </div>
