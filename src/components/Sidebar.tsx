@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { GitHub, Linkedin, Mail, FileDown } from 'lucide-react';
+import { Github, Linkedin, Mail, FileDown } from 'lucide-react';
 
 interface SocialLink {
   name: string;
@@ -11,7 +11,7 @@ interface SocialLink {
 const socialLinks: SocialLink[] = [
   {
     name: 'GitHub',
-    icon: <GitHub size={18} />,
+    icon: <Github size={18} />,
     url: '#'
   },
   {
