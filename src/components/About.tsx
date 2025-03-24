@@ -2,6 +2,7 @@
 import React, { useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
 import { ExternalLink } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
 
 const skills = [
   'ReactJS',
@@ -14,6 +15,15 @@ const skills = [
   'Next.js',
   'Jira',
   'Angular 15'
+];
+
+const latestSkills = [
+  'Microfrontend',
+  'Vite',
+  'OpenAPI',
+  'Cosmos DB',
+  'Azure',
+  'DevOps'
 ];
 
 const About: React.FC = () => {
@@ -76,13 +86,27 @@ const About: React.FC = () => {
               </p>
             </div>
             
-            <ul className="grid grid-cols-2 sm:grid-cols-3 gap-x-2 gap-y-2 mt-6 fade-up-animation">
-              {skills.map((skill, index) => (
-                <li key={index} className="flex items-center font-mono text-sm text-muted-foreground">
-                  <span className="text-accent mr-2">▹</span> {skill}
-                </li>
-              ))}
-            </ul>
+            <div className="mt-6 fade-up-animation">
+              <h4 className="text-sm font-mono mb-3 text-accent">Latest Expertise</h4>
+              <ul className="grid grid-cols-2 sm:grid-cols-3 gap-x-2 gap-y-2 mb-6">
+                {latestSkills.map((skill, index) => (
+                  <li key={`latest-${index}`} className="flex items-center font-mono text-sm">
+                    <Badge variant="secondary" className="bg-accent/10 text-accent border-accent/20">
+                      <span className="mr-2">▹</span> {skill}
+                    </Badge>
+                  </li>
+                ))}
+              </ul>
+              
+              <h4 className="text-sm font-mono mb-3 text-muted-foreground">Core Skills</h4>
+              <ul className="grid grid-cols-2 sm:grid-cols-3 gap-x-2 gap-y-2">
+                {skills.map((skill, index) => (
+                  <li key={index} className="flex items-center font-mono text-sm text-muted-foreground">
+                    <span className="text-accent mr-2">▹</span> {skill}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
           
           <div className="fade-up-animation">
