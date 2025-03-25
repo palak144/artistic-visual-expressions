@@ -89,7 +89,7 @@ interface FeaturedProjectProps {
   isReversed?: boolean;
 }
 
-const FeaturedProject: React.FC<FeaturedProjectProps> = ({ project, isReversed = false }) => {
+const FeaturedProject: React.FC<FeaturedProjectProps> = ({ project, isReversed = true }) => {
   return (
     <div className={`relative grid grid-cols-12 gap-4 items-center fade-up-animation mb-16 md:mb-24`}>
       <div className={`col-span-12 md:col-span-7 ${isReversed ? 'md:col-start-6' : ''} row-start-1 row-end-[-1]`}>
@@ -234,11 +234,11 @@ const Portfolio: React.FC = () => {
         <h2 className="numbered-heading mb-12 fade-up-animation">Some Things I've Built</h2>
         
         <div className="mb-20">
-          {featuredProjects.map((project, index) => (
+          {featuredProjects.map((project) => (
             <FeaturedProject 
               key={project.id} 
               project={project} 
-              isReversed={index % 2 !== 0} 
+              isReversed={true} 
             />
           ))}
         </div>
