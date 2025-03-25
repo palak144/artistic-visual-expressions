@@ -140,7 +140,7 @@ const Contact: React.FC = () => {
           
           <div className="flex gap-6">
             <a
-              href="#"
+              href="https://github.com/palak144"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-accent transition-colors flex flex-col items-center gap-1"

@@ -89,7 +89,7 @@ const About: React.FC = () => {
             <div className="relative group">
               <div className="relative rounded border-2 border-accent w-full h-64 md:h-80 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300">
                 <img 
-                  src="https://media.licdn.com/dms/image/C5603AQFTOcww8wOkuA/profile-displayphoto-shrink_800_800/0/1650894901044?e=1716422400&v=beta&t=nQDUvTi3TUK0lRJT8ZVWP_QlUWKJ1y5MwJ9SfQ4xIrI" 
+                  src="/IMG_20230719_194916_023.jpg" 
                   alt="Palak Agrawal" 
                   className="w-full h-full object-cover rounded filter grayscale hover:grayscale-0 transition-all duration-300"
                 />

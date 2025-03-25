@@ -12,7 +12,7 @@ const socialLinks: SocialLink[] = [
   {
     name: 'GitHub',
     icon: <Github size={18} />,
-    url: '#'
+    url: 'https://github.com/palak144'
   },
   {
     name: 'LinkedIn',
