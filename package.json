@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://palak144.github.io/artistic-visual-expressions/",
+  "homepage": "https://palak144.github.io/artistic-visual-expressions",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
